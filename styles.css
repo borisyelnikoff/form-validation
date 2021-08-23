@@ -1,0 +1,36 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Lato, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    padding: 1rem 2rem;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.field-container {
+    padding: 0 2rem;
+}
+
+.field-container > input {
+    max-width: 60rem;
+}
+
+#submit-button {
+    margin: 0 2rem;
+}
