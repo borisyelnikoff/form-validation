@@ -1,57 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Lato:400,400italic,600,600italic"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
-        />
-        <link rel="stylesheet" href="styles.css" />
-        <title>Document</title>
-    </head>
-    <body>
-        <main>
-            <h1>Form Validator</h1>
-            <form action="">
-                <h2>Fill credentials</h2>
-                <div id="name-container" class="field-container">
-                    <label for="name">Name</label>
-                    <input id="name" type="text" />
-                    <p class="hidden"></p>
-                </div>
-                <div id="email-container" class="field-container">
-                    <label for="email">E-mail</label>
-                    <input id="email" type="text" />
-                    <p class="hidden"></p>
-                </div>
-                <div id="password-container" class="field-container">
-                    <label for="password">Password</label>
-                    <input id="password" type="text" />
-                    <p class="hidden"></p>
-                </div>
-                <div id="confirm-container" class="field-container">
-                    <label for="confirm">Confirm password</label>
-                    <input id="confirm" type="password" />
-                    <p class="hidden"></p>
-                </div>
-                <div id="rodo-container" class="field-container">
-                    <label for="rodo">Accept RODO</label>
-                    <input id="rodo" type="checkbox" />
-                    <p class="hidden"></p>
-                </div>
-                <button id="submit-button" type="submit">Wyślij</button>
-            </form>
-        </main>
-    </body>
-    <script type="module" src="src/index.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:400,400italic,600,600italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <h1>Form Validator</h1>
+      <form action="">
+        <h2>Fill credentials</h2>
+        <div id="name-container" class="field-container">
+          <label for="name">Name</label>
+          <input id="name" type="text" />
+        </div>
+        <div id="email-container" class="field-container">
+          <label for="email">E-mail</label>
+          <input id="email" type="text" />
+        </div>
+        <div id="password-container" class="field-container">
+          <label for="password">Password</label>
+          <input id="password" type="text" />
+        </div>
+        <div id="confirm-container" class="field-container">
+          <label for="confirm">Confirm password</label>
+          <input id="confirm" type="password" />
+        </div>
+        <div id="rodo-container" class="field-container">
+          <label for="rodo">Accept RODO</label>
+          <input id="rodo" type="checkbox" />
+        </div>
+        <button id="submit-button" type="submit">Submit</button>
+      </form>
+    </main>
+  </body>
+  <script type="module" src="src/schemaBuilder.js"></script>
+  <script type="module" src="src/index.js"></script>
 </html>
