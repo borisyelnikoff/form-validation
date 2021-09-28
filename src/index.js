@@ -1,5 +1,10 @@
-import Validator from "./validator";
+import schemaBuilder from "./schemaBuilder";
 
-const schema = Validator.string().number();
+const inputSchema = schemaBuilder
+  .string()
+  .required()
+  .label("login")
+  .min(6)
+  .max(15);
 
-console.log(schema);
+console.log(inputSchema);
