@@ -11,19 +11,19 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called any()", () => {
-    it("Should return a new schema when used as a function.", () => {
+    it("Returns a new schema when used as a function.", () => {
       const result = any();
 
       expect(result).toBeInstanceOf(createSchema);
     });
 
-    it("Should return a new schema with no own properties.", () => {
+    it("Returns a new schema with no own properties.", () => {
       const result = Object.keys(schema).length;
 
       expect(result).toEqual(0);
     });
 
-    it("Should return the same schema if called as a method.", () => {
+    it("Returns the same schema if called as a method.", () => {
       const result = schema.any();
 
       expect(result).toBe(schema);
@@ -31,25 +31,25 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called boolean()", () => {
-    it("Should return a new schema if called as a function.", () => {
+    it("Returns a new schema if called as a function.", () => {
       const result = boolean();
 
       expect(result).toBeInstanceOf(createSchema);
     });
 
-    it("Should return a new schema with isBoolean property set to true when used as a function.", () => {
+    it("Returns a new schema with isBoolean property as true when used as a function.", () => {
       const result = boolean();
 
       expect(result.isBoolean).toEqual(true);
     });
 
-    it("Should return schema object with added isBoolean property set to true when used as a method.", () => {
+    it("Returns schema object with added isBoolean property as true when used as a method.", () => {
       const result = schema.boolean();
 
       expect(result).toHaveProperty("isBoolean");
     });
 
-    it("Should throw an error if different type was already selected.", () => {
+    it("Throws an error if different type was already selected.", () => {
       schema.number();
 
       expect(() => schema.boolean()).toThrowError();
@@ -57,13 +57,13 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called string()", () => {
-    it("Should create schema object with property isString set to true when used as a function.", () => {
+    it("Creates schema object with property isString as true when used as a function.", () => {
       const result = string();
 
       expect(result.isString).toEqual(true);
     });
 
-    it("Should create schema object with property isString set to true when used as a method.", () => {
+    it(" create schema object with property isString set to true when used as a method.", () => {
       const result = schema.string();
 
       expect(result.isString).toEqual(true);
@@ -77,13 +77,13 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called number()", () => {
-    it("Should return schema object with isNumber property set to true.", () => {
+    it("Should return schema object with isNumber property as true.", () => {
       const result = schema.number();
 
       expect(result.isNumber).toEqual(true);
     });
 
-    it("Should throw an error if different type was already selected.", () => {
+    it("Throws an error if different type was already selected.", () => {
       schema.string();
 
       expect(() => schema.number()).toThrowError();
@@ -91,7 +91,7 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called required()", () => {
-    it("Should return schema with isRequired property.", () => {
+    it("Returns schema with isRequired property.", () => {
       const result = schema.required();
 
       expect(result.isRequired).toEqual(true);
@@ -99,7 +99,7 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When chaining schema calls", () => {
-    it("Should return schema of type string with min and max length, and required option.", () => {
+    it("Returns schema of type string with min and max length, and required option.", () => {
       const result = string().min(1).max(2).required();
 
       expect(result.isString).toEqual(true);
@@ -108,16 +108,18 @@ describe("Validation schema builder tests.", () => {
       expect(result.isRequired).toEqual(true);
     });
 
-    it("Should return schema of type number with min and max value, required and label.", () => {
-      const result = required().number().min(0).max(1).label("a");
+    it("Returns schema of type number with min and max value, required and label.", () => {
+      const name = "a";
+
+      const result = required().number().min(0).max(1).label(name);
 
       expect(result.isRequired).toEqual(true);
       expect(result.minValue).toEqual(0);
       expect(result.maxValue).toEqual(1);
-      expect(result.label).toEqual("a");
+      expect(result.name).toEqual(name);
     });
 
-    it("Should return schema with password which length does not exceed 100 characters", () => {
+    it("Returns schema with password which length does not exceed 100 characters", () => {
       const result = password().max(101);
       const expectedMaxLength = 100;
 
@@ -125,7 +127,7 @@ describe("Validation schema builder tests.", () => {
       expect(result.maxLength).toBeLessThanOrEqual(expectedMaxLength);
     });
 
-    it("Should return schema with password which length is at least 6 characters", () => {
+    it("Returns schema with password which length is at least 6 characters", () => {
       const result = password().min(5);
       const expectedMinLength = 6;
 
@@ -133,7 +135,7 @@ describe("Validation schema builder tests.", () => {
       expect(result.minLength).toBeGreaterThanOrEqual(expectedMinLength);
     });
 
-    it("Should return schema with password which min length specified by argument.", () => {
+    it("Returns schema with password which min length specified by argument.", () => {
       const minLength = 8;
       const result = password().min(minLength);
 
@@ -141,7 +143,7 @@ describe("Validation schema builder tests.", () => {
       expect(result.minLength).toEqual(minLength);
     });
 
-    it("Should return schema with password which max length specified by argument.", () => {
+    it("Returns schema with password which max length specified by argument.", () => {
       const maxLength = 30;
       const result = password().max(maxLength);
 
@@ -151,7 +153,7 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called password()", () => {
-    it("Should return schema with isPassword property set to true and default lengths.", () => {
+    it("Returns schema with isPassword property as true and default lengths.", () => {
       const result = required().password();
 
       expect(result.isPassword).toEqual(true);
@@ -161,7 +163,7 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called email()", () => {
-    it("Should return schema with isEmail property set to true.", () => {
+    it("Returns schema with isEmail property set to true.", () => {
       const result = email();
 
       expect(result.isEmail).toEqual(true);
@@ -169,7 +171,7 @@ describe("Validation schema builder tests.", () => {
   });
 
   describe("When called allows(values)", () => {
-    it("Should return schema with values array.", () => {
+    it("Returns schema with values array.", () => {
       const expected = ["1", 2, "three"];
 
       const result = schema.allows(...expected);

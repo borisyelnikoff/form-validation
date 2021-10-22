@@ -1,4 +1,4 @@
-const PASSWORD_MIN_LENGTH = 6;
+const PASSWORD_MIN_LENGTH = 8;
 const PASSWORD_MAX_LENGTH = 100;
 
 createSchema.prototype.any = any;
@@ -13,12 +13,12 @@ createSchema.prototype.email = email;
 createSchema.prototype.password = password;
 createSchema.prototype.allows = allows;
 
-function isOfTypeSchema(obj) {
+function isSchemaType(obj) {
   return Object.prototype.isPrototypeOf.call(createSchema.prototype, obj);
 }
 
 function createSchema(self) {
-  if (isOfTypeSchema(self)) {
+  if (isSchemaType(self)) {
     return self;
   }
 
@@ -70,7 +70,7 @@ function number() {
 
 function label(name) {
   const schema = createSchema(this);
-  schema.label = name;
+  schema.name = name;
 
   return schema;
 }
@@ -121,11 +121,11 @@ function password() {
   const schema = createSchema(this);
   schema.isPassword = true;
 
-  if (!schema.minLength) {
+  if (!schema.minLength || schema.minLength < PASSWORD_MIN_LENGTH) {
     schema.minLength = PASSWORD_MIN_LENGTH;
   }
 
-  if (!schema.maxLength) {
+  if (!schema.maxLength || schema.maxLength > PASSWORD_MAX_LENGTH) {
     schema.maxLength = PASSWORD_MAX_LENGTH;
   }
 
@@ -135,6 +135,20 @@ function password() {
 function allows(...values) {
   const schema = createSchema(this);
   schema.values = [...values];
+
+  return schema;
+}
+
+function alphanum() {
+  const schema = createSchema(this);
+  schema.isAlphanumeric = true;
+
+  return schema;
+}
+
+function alphabetic() {
+  const schema = createSchema(this);
+  schema.isAlphabetic = true;
 
   return schema;
 }
@@ -151,8 +165,10 @@ export default {
   email,
   password,
   allows,
+  alphanum,
+  alphabetic,
   createSchema,
-  isOfTypeSchema,
+  isSchemaType,
   PASSWORD_MIN_LENGTH,
   PASSWORD_MAX_LENGTH,
 };
