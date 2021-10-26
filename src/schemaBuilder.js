@@ -140,14 +140,28 @@ function allows(...values) {
 }
 
 function alphanum() {
+  if (this && (this.isBoolean || this.isNumber)) {
+    throw new Error(
+      "Invalid schema option. Variable type has already been selected."
+    );
+  }
+
   const schema = createSchema(this);
+  schema.isString = true;
   schema.isAlphanumeric = true;
 
   return schema;
 }
 
 function alphabetic() {
+  if (this && (this.isBoolean || this.isNumber)) {
+    throw new Error(
+      "Invalid schema option. Variable type has already been selected."
+    );
+  }
+
   const schema = createSchema(this);
+  schema.isString = true;
   schema.isAlphabetic = true;
 
   return schema;
