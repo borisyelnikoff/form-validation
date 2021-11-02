@@ -1,7 +1,17 @@
 import schemaBuilder from "../schemaBuilder";
 
-const { any, boolean, string, required, email, createSchema, password } =
-  schemaBuilder;
+const {
+  any,
+  boolean,
+  number,
+  string,
+  required,
+  email,
+  alphabetic,
+  alphanum,
+  createSchema,
+  password,
+} = schemaBuilder;
 
 let schema = any();
 
@@ -167,6 +177,34 @@ describe("Validation schema builder tests.", () => {
       const result = email();
 
       expect(result.isEmail).toEqual(true);
+    });
+  });
+
+  describe("When called alphabetic()", () => {
+    it("Returns schema with isAlphabetic and isString set to true.", () => {
+      const result = alphabetic();
+
+      expect(result.isString).toEqual(true);
+      expect(result.isAlphabetic).toEqual(true);
+    });
+
+    it("Throws an error when number or boolean type was already selected.", () => {
+      expect(() => number().alphabetic()).toThrowError();
+      expect(() => boolean().alphabetic()).toThrowError();
+    });
+  });
+
+  describe("When called alphanum()", () => {
+    it("Returns schema with isAlphanumeric and isString set to true.", () => {
+      const result = alphanum();
+
+      expect(result.isString).toEqual(true);
+      expect(result.isAlphanumeric).toEqual(true);
+    });
+
+    it("Throws an error when number or boolean type was already selected.", () => {
+      expect(() => number().alphanum()).toThrowError();
+      expect(() => boolean().alphanum()).toThrowError();
     });
   });
 
