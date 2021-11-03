@@ -12,6 +12,8 @@ createSchema.prototype.max = max;
 createSchema.prototype.email = email;
 createSchema.prototype.password = password;
 createSchema.prototype.allows = allows;
+createSchema.prototype.alphabetic = alphabetic;
+createSchema.prototype.alphanum = alphanum;
 
 function isSchemaType(obj) {
   return Object.prototype.isPrototypeOf.call(createSchema.prototype, obj);
