@@ -98,8 +98,7 @@ function validateString(input, schema) {
   if (!result.isValid) {
     result.error = `${hasMinLength ? "Max" : "Min"} length for ${getName(
       schema
-    )} not met.
-${createRangeMsg(minLength, maxLength)}`;
+    )} not met. Length ${createRangeMsg(minLength, maxLength)} expected.`;
   }
 
   return result;
@@ -139,8 +138,10 @@ function validateRange(input, schema) {
   if (!result.isValid) {
     result.error = `${
       meetsMinValueBound ? "Max" : "Min"
-    } value constraint not met. 
-${createRangeMsg(minValue, maxValue)}`;
+    } value constraint not met. Value ${createRangeMsg(
+      minValue,
+      maxValue
+    )} expected.`;
   }
 
   return result;
@@ -160,7 +161,7 @@ function validateEmail(input, schema) {
   if (emailRegex.test(input)) {
     result.isValid = true;
   } else {
-    result.error = `${getName(schema)} is not a valid e-mail.`;
+    result.error = `${getName(schema)} value is not valid e-mail address.`;
   }
 
   return result;
@@ -195,8 +196,7 @@ function validatePassword(input, schema) {
     hasValidLength;
 
   if (!result.isValid) {
-    result.error = `At least one upper case letter 
-and special character required. No white spaces.`;
+    result.error = `At least one upper case letter and special character required. No white spaces.`;
   }
 
   return result;
@@ -215,7 +215,7 @@ function validateValues(input, schema) {
   });
 
   if (!result.isValid) {
-    result.error = `${getName(schema)} value does not match predefined values.`;
+    result.error = `${getName(schema)} value does not match.`;
   }
 
   return result;
@@ -260,7 +260,7 @@ function validateAlphanum(input, schema) {
 }
 
 function createRangeMsg(min, max) {
-  return `A range between ${min} and ${max} expected.`;
+  return `between ${min} and ${max === undefined ? "infinity" : max}`;
 }
 
 function getName(schema) {
