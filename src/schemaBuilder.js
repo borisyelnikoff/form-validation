@@ -122,6 +122,7 @@ function email() {
 function password() {
   const schema = createSchema(this);
   schema.isPassword = true;
+  schema.isString = true;
 
   if (!schema.minLength || schema.minLength < PASSWORD_MIN_LENGTH) {
     schema.minLength = PASSWORD_MIN_LENGTH;
