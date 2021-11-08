@@ -185,15 +185,12 @@ function validatePassword(input, schema) {
   const containsDigit = /\d/.test(input);
   const containsSpecialChar = /[^a-zA-Z0-9\s]/.test(input);
   const doesNotContainWhiteSpace = !/\s/.test(input);
-  const hasValidLength =
-    input.length >= schema.minLength && input.length <= schema.maxLength;
 
   result.isValid =
     containsUpperCaseLetter &&
     containsSpecialChar &&
     containsDigit &&
-    doesNotContainWhiteSpace &&
-    hasValidLength;
+    doesNotContainWhiteSpace;
 
   if (!result.isValid) {
     result.error = `At least one upper case letter and special character required. No white spaces.`;
