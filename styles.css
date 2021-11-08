@@ -1,36 +1,42 @@
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: Lato, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Lato, "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 h1,
 h2,
 h3 {
-    padding: 1rem 2rem;
-}
-
-.hidden {
-    visibility: hidden;
+  padding: 1rem 2rem;
 }
 
 .field-container {
-    padding: 0 2rem;
+  padding: 0 2rem;
 }
 
 .field-container > input {
-    max-width: 60rem;
+  max-width: 60rem;
 }
 
 #submit-button {
-    margin: 0 2rem;
+  margin: 0 2rem;
+}
+
+.m-b-0 {
+  margin-bottom: 0;
+}
+
+.error {
+  margin: 0 0 1.5rem 0;
+  font-weight: 500;
+  color: #ff4d4d;
 }
