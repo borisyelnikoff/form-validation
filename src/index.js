@@ -10,7 +10,7 @@ const emailInput = document.querySelector("#email");
 const passwordInput = document.querySelector("#password");
 const passwordConfirmInput = document.querySelector("#confirm");
 const rodoInput = document.querySelector("#rodo");
-const submitButton = document.querySelector("form > button[type=submit]");
+
 const schema = {
   [nameInput.id]: schemaBuilder.required().alphabetic().min(2).label("Name"),
   [emailInput.id]: schemaBuilder.required().email().label("Email"),
@@ -22,7 +22,7 @@ const schema = {
   [rodoInput.id]: schemaBuilder.required().boolean().label("Rodo acceptance"),
 };
 
-submitButton.addEventListener("click", handleSubmit);
+document.forms[0].addEventListener("submit", handleSubmit);
 
 async function handleSubmit(event) {
   event.preventDefault();
