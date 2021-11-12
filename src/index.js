@@ -99,7 +99,7 @@ function insertErrorMessageAfter(referenceNode, message) {
   const errorElement = document.createElement("p");
   errorElement.classList.add("error");
   errorElement.innerText = message;
-  referenceNode.classList.add("m-b-0");
+  referenceNode.classList.add("m-b-0", "border-red");
   insertAfter(referenceNode, errorElement);
 }
 
@@ -114,7 +114,7 @@ function restoreUIToDefault() {
   });
 
   inputFields.forEach((input) => {
-    input.classList.remove("m-b-0");
+    input.classList.remove("m-b-0", "border-red");
   });
 }
 
