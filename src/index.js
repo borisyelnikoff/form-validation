@@ -120,7 +120,7 @@ function restoreUIToDefault() {
 
 function clearInputs() {
   inputFields.forEach((input) => {
-    if (input.type === "checked") {
+    if (input.type === "checkbox") {
       input.checked = false;
     } else {
       input.value = "";
